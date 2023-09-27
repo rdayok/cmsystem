@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Customer")
+@Table(name = "CUSTOMER")
 public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,6 @@ public class Customer implements Serializable {
     private String email;
     @NaturalId
     private String phoneNumber;
-    private String country;
     private String city;
     private String address;
 

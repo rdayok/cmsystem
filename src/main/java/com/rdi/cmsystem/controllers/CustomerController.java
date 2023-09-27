@@ -1,6 +1,8 @@
 package com.rdi.cmsystem.controllers;
 
 import com.rdi.cmsystem.data.models.Customer;
+import com.rdi.cmsystem.dto.response.RegisterCustomerResponse;
+import com.rdi.cmsystem.dto.request.RegisterCustomerRequest;
 import com.rdi.cmsystem.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +23,7 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getCustomers() {
+    public ResponseEntity<List<Customer>> getCustomer() {
         List<Customer> allCustomers = customerService.getCustomers();
         return new ResponseEntity<>(allCustomers, HttpStatus.OK);
     }
@@ -33,9 +35,11 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
-        Customer addedCustomer = customerService.addCustomer(customer);
-        return new ResponseEntity<>(addedCustomer, HttpStatus.OK);
+    public ResponseEntity<RegisterCustomerResponse> registerCustomer
+            (@RequestBody RegisterCustomerRequest registerCustomerRequest) {
+        RegisterCustomerResponse registeredCustomer =
+                customerService.registerCustomer(registerCustomerRequest);
+        return new ResponseEntity<>(registeredCustomer, HttpStatus.CREATED);
     }
 
     @PutMapping
