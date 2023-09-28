@@ -1,8 +1,11 @@
 package com.rdi.cmsystem.controllers;
 
 import com.rdi.cmsystem.data.models.Customer;
+import com.rdi.cmsystem.dto.request.UpdateCustomerDetailsRequest;
+import com.rdi.cmsystem.dto.response.CustomerResponse;
 import com.rdi.cmsystem.dto.response.RegisterCustomerResponse;
 import com.rdi.cmsystem.dto.request.RegisterCustomerRequest;
+import com.rdi.cmsystem.dto.response.UpdateCustomerDetailsResponse;
 import com.rdi.cmsystem.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,15 +26,15 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getCustomer() {
-        List<Customer> allCustomers = customerService.getCustomers();
-        return new ResponseEntity<>(allCustomers, HttpStatus.OK);
+    public ResponseEntity<List<CustomerResponse>> getCustomer() {
+        List<CustomerResponse> customerResponses = customerService.getCustomers();
+        return new ResponseEntity<>(customerResponses, HttpStatus.FOUND);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable("id") Long customerId) {
-        Customer gottenCustomer = customerService.getCustomer(customerId);
-        return new ResponseEntity<>(gottenCustomer, HttpStatus.OK);
+    public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") Long customerId) {
+        CustomerResponse gottenCustomer = customerService.getCustomer(customerId);
+        return new ResponseEntity<>(gottenCustomer, HttpStatus.FOUND);
     }
 
     @PostMapping
@@ -43,9 +46,11 @@ public class CustomerController {
     }
 
     @PutMapping
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-        Customer addedCustomer = customerService.addCustomer(customer);
-        return new ResponseEntity<>(addedCustomer, HttpStatus.OK);
+    public ResponseEntity<UpdateCustomerDetailsResponse> updateCustomerDetails
+            (@RequestBody UpdateCustomerDetailsRequest updateCustomerDetailsRequest) {
+        UpdateCustomerDetailsResponse updateCustomerResponse =
+                customerService.updateCustomerDetails(updateCustomerDetailsRequest);
+        return new ResponseEntity<>(updateCustomerResponse, HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
