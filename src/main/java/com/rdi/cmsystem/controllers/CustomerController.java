@@ -38,9 +38,9 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<RegisterCustomerResponse> registerCustomer
+    public ResponseEntity<CustomerResponse> registerCustomer
             (@RequestBody RegisterCustomerRequest registerCustomerRequest) {
-        RegisterCustomerResponse registeredCustomer =
+        CustomerResponse registeredCustomer =
                 customerService.registerCustomer(registerCustomerRequest);
         return new ResponseEntity<>(registeredCustomer, HttpStatus.CREATED);
     }
