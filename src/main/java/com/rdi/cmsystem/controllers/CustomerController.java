@@ -46,9 +46,9 @@ public class CustomerController {
     }
 
     @PutMapping
-    public ResponseEntity<UpdateCustomerDetailsResponse> updateCustomerDetails
+    public ResponseEntity<CustomerResponse> updateCustomerDetails
             (@RequestBody UpdateCustomerDetailsRequest updateCustomerDetailsRequest) {
-        UpdateCustomerDetailsResponse updateCustomerResponse =
+        CustomerResponse updateCustomerResponse =
                 customerService.updateCustomerDetails(updateCustomerDetailsRequest);
         return new ResponseEntity<>(updateCustomerResponse, HttpStatus.OK);
     }
