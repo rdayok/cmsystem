@@ -18,8 +18,8 @@ public interface CustomerService {
 
     void deleteCustomer(Long id);
 
-    RegisterCustomerResponse registerCustomer(RegisterCustomerRequest registerCustomerRequest);
+    CustomerResponse registerCustomer(RegisterCustomerRequest registerCustomerRequest);
 
-    UpdateCustomerDetailsResponse updateCustomerDetails(UpdateCustomerDetailsRequest updateCustomerDetailsRequest);
+    CustomerResponse updateCustomerDetails(UpdateCustomerDetailsRequest updateCustomerDetailsRequest);
 }
 

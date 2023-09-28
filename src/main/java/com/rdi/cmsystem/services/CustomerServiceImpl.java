@@ -51,17 +51,17 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public RegisterCustomerResponse registerCustomer(RegisterCustomerRequest registerCustomerRequest) {
+    public CustomerResponse registerCustomer(RegisterCustomerRequest registerCustomerRequest) {
         Customer customer = mapper.map(registerCustomerRequest, Customer.class);
         Customer savedCustomer = customerRepository.save(customer);
-        return mapper.map(savedCustomer, RegisterCustomerResponse.class);
+        return mapper.map(savedCustomer, CustomerResponse.class);
     }
 
     @Override
-    public UpdateCustomerDetailsResponse updateCustomerDetails
+    public CustomerResponse updateCustomerDetails
             (UpdateCustomerDetailsRequest updateCustomerDetailsRequest) {
         Customer customer = mapper.map(updateCustomerDetailsRequest, Customer.class);
         Customer updatedCustomer = customerRepository.save(customer);
-        return mapper.map(updatedCustomer, UpdateCustomerDetailsResponse.class);
+        return mapper.map(updatedCustomer, CustomerResponse.class);
     }
 }
